@@ -8,7 +8,7 @@ import { Oferta } from "./shared/oferta.model"
 @Injectable()
 export class OfertasService{
 
-    baseUrl = 'http://localhost:3000/ofertas'
+    baseUrl = `http://localhost:3000`
 
     constructor(private http: HttpClient){}   
 
@@ -19,6 +19,58 @@ export class OfertasService{
         .toPromise()
             .then((resposta: any) => resposta)
     }
+
+
+    public getOfertasPorCategorias(categoria:string): Promise<Oferta[]>{
+
+        const url = `${this.baseUrl}/ofertas?categoria=${categoria}`;
+        return this.http.get(url)
+        .toPromise()
+        .then((resposta: any) => resposta)
+    }
+
+    public getOfertasPorDiversao(diversao:string): Promise<Oferta[]>{
+
+        const url = `${this.baseUrl}/ofertas?categoria=${diversao}`;
+        return this.http.get(url)
+        .toPromise()
+        .then((resposta: any) => resposta)
+    }
+
+    public getOfertaPorId(id: number): Promise<Oferta>{
+        const url = `${this.baseUrl}/ofertas?id=${id}`;
+        return this.http.get(url)
+        .toPromise()
+        .then((resposta: any) => {
+            return resposta[0]
+        })
+    }
+
+    public getComoUsarOfertaPorId(id:number): Promise<string>{
+
+        const url = `${this.baseUrl}/como-usar?id=${id}`;
+        return this.http.get(url)
+        .toPromise()
+        .then((resposta: any) => {
+           return resposta[0].descricao
+        }) 
+    }
+
+    public getOndeFicaOfertaPorId(id:number): Promise<string>{
+
+        const url = `${this.baseUrl}/onde-fica?id=${id}`;
+        return this.http.get(url)
+        .toPromise()
+        .then((resposta: any) => {
+           return resposta[0].descricao
+        }) 
+    }
+
+
+    
+
+
+ 
 
 
 

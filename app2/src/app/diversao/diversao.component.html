@@ -1,0 +1,26 @@
+<div class="container">
+  
+    <div class="secao">
+      <h3 class="text-center">Cinema, viagens, diversão muito e mais!</h3>
+      <h5 class="text-center">Conheça as melhores ofertas para você se divertir quando quiser:</h5>
+    </div>
+  
+    <div class="card mb-3 shadow"  *ngFor="let oferta of ofertas">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img  [src]="oferta.imagens[0].url"  class="img-fluid rounded-start"  style="height: 100%;"  alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{oferta.titulo}}</h5>
+            <p class="card-text">{{oferta.descricao_oferta}}</p>
+            <p  class="card-text">Anunciado por:<b>{{ oferta.anunciante }}</b></p>
+            <p class="card-text"><small class="text-muted">{{oferta.valor | currency:'R$  '}}</small></p>
+            <a [routerLink]="['/oferta', oferta.id]" class="btn btn-outline-success" style="width: 100%;">Ver oferta</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
