@@ -15,9 +15,10 @@
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">{{oferta.titulo}}</h5>
+          <p>{{dataTeste}}</p>
           <p class="card-text">{{oferta.descricao_oferta}}</p>
           <p  class="card-text">Anunciado por:<b>{{ oferta.anunciante }}</b></p>
-          <p class="card-text"><small class="text-muted">{{oferta.valor | currency:'R$  '}}</small></p>
+          <p class="card-text"><small class="text-muted">{{oferta.valor | currency:'BRL': true}}</small></p>
           <a  [routerLink]="['/oferta', oferta.id]"  class="btn btn-outline-success" style="width: 100%;">Ver oferta</a>
         </div>
       </div>

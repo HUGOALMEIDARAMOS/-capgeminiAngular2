@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http"
 import { Injectable } from "@angular/core"
 import { Observable } from "rxjs"
-import { retry } from "rxjs/operators"
+import { map, retry } from "rxjs/operators"
+import { URL_API } from "./app.api"
 import { Oferta } from "./shared/oferta.model"
 
 
@@ -15,7 +16,8 @@ export class OfertasService{
     public getOferta(): Promise<Oferta[]>{
        //efetuar uma requisicao http
        //retornar uma promisse Oferta[]
-      return this.http.get(this.baseUrl)
+       const url = `${URL_API}/ofertas?destaque=true`;
+      return this.http.get(url)
         .toPromise()
             .then((resposta: any) => resposta)
     }
@@ -23,7 +25,7 @@ export class OfertasService{
 
     public getOfertasPorCategorias(categoria:string): Promise<Oferta[]>{
 
-        const url = `${this.baseUrl}/ofertas?categoria=${categoria}`;
+        const url = `${URL_API}/ofertas?categoria=${categoria}`;
         return this.http.get(url)
         .toPromise()
         .then((resposta: any) => resposta)
@@ -31,14 +33,14 @@ export class OfertasService{
 
     public getOfertasPorDiversao(diversao:string): Promise<Oferta[]>{
 
-        const url = `${this.baseUrl}/ofertas?categoria=${diversao}`;
+        const url = `${URL_API}/ofertas?categoria=${diversao}`;
         return this.http.get(url)
         .toPromise()
         .then((resposta: any) => resposta)
     }
 
     public getOfertaPorId(id: number): Promise<Oferta>{
-        const url = `${this.baseUrl}/ofertas?id=${id}`;
+        const url = `${URL_API}/ofertas?id=${id}`;
         return this.http.get(url)
         .toPromise()
         .then((resposta: any) => {
@@ -48,7 +50,7 @@ export class OfertasService{
 
     public getComoUsarOfertaPorId(id:number): Promise<string>{
 
-        const url = `${this.baseUrl}/como-usar?id=${id}`;
+        const url = `${URL_API}/como-usar?id=${id}`;
         return this.http.get(url)
         .toPromise()
         .then((resposta: any) => {
@@ -58,7 +60,7 @@ export class OfertasService{
 
     public getOndeFicaOfertaPorId(id:number): Promise<string>{
 
-        const url = `${this.baseUrl}/onde-fica?id=${id}`;
+        const url = `${URL_API}/onde-fica?id=${id}`;
         return this.http.get(url)
         .toPromise()
         .then((resposta: any) => {
@@ -66,8 +68,15 @@ export class OfertasService{
         }) 
     }
 
+    public pesquisaOferta(termo: string): Observable<Oferta[]>{
+        const url = `${URL_API}/ofertas?descricao_oferta_like=${termo}`;
+        return this.http.get<Oferta[]>(url)
+        .pipe(retry(10))  // aqui é para dizer ao http fazer 10 tentativas caso de erro
+        .pipe(map((response) => response))
+    }
 
     
+
 
 
  
