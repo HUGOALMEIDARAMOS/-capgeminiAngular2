@@ -8,10 +8,14 @@
           </a>
         </div>
         <div class="col-lg-6">
-            {{oferta2 | json}}
+            <!--{{oferta2 | json}}-->
             <input type="text" class="form-control"  placeholder="Pesquise por ofertas" #termoDaPesquisa  (keyup)="pesquisa(termoDaPesquisa.value)">
-            <ul class="list-group"s style="position: absolute;">
-              <li class="list-group-item" *ngFor="let oferta of oferta2">{{oferta.titulo}}</li>
+            <ul class="list-group"s style="position: absolute; z-index: 999;">
+              <li class="list-group-item" *ngFor="let oferta of ofertas | async">
+                <a [routerLink]="['/oferta', oferta.id]" (click)="limpaPesquisa()">
+                  {{oferta.titulo |descricaoReduzida:15:3 | uppercase}}
+                </a>       
+              </li>       
             </ul>
         </div>
         <div class="col-lg-2">

@@ -9,8 +9,7 @@ import { Oferta } from "./shared/oferta.model"
 @Injectable()
 export class OfertasService{
 
-    baseUrl = `http://localhost:3000`
-
+   
     constructor(private http: HttpClient){}   
 
     public getOferta(): Promise<Oferta[]>{

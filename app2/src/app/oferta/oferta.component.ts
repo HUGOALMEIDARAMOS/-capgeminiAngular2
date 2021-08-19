@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ɵangular_packages_platform_browser_platform_browser_a } from '@angular/platform-browser';
+import { ActivatedRoute, Params } from '@angular/router';
 //import { Observable, Observer, Subscription, interval } from 'rxjs';
 import { OfertasService } from '../ofertas.service';
 import { Oferta } from '../shared/oferta.model';
@@ -22,14 +23,15 @@ export class OfertaComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    //captura os parametros vindo na rota.   
-    this.ofertaService.getOfertaPorId(this.route.snapshot.params['id'])
+    this.route.params.subscribe((parametros: Params) =>{
+      this.ofertaService.getOfertaPorId( parametros.id)
       .then(( oferta: Oferta ) => {
         this.oferta = oferta
         //console.log(this.oferta)
       })
+    })
 
-
+   
     //  let tempo = interval(2000)
     //    this.tempoObservableSubscription = tempo.subscribe((intervalo: number) =>{
     //    console.log(intervalo)

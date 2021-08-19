@@ -14,7 +14,7 @@ export class TopoComponent implements OnInit {
 
   public ofertas !: Observable<Oferta[]>
   public subjectPesquisa : Subject<string> = new Subject<string>()  //nosso proxy
-  public oferta2 !:Oferta[]
+ 
 
  
 
@@ -39,12 +39,7 @@ export class TopoComponent implements OnInit {
       return of<Oferta[]>([])
     }))    
 
-    this.ofertas.subscribe(
-      (ofertas: Oferta[]) => {
-        this.oferta2 = ofertas
-        console.log(this.oferta2)
-      }
-    )
+  
   }
 
   public pesquisa(termoDaPesquisa: string): void {
@@ -57,6 +52,10 @@ export class TopoComponent implements OnInit {
     //   (erro: any) => console.log('Erro status', erro.status),
     //   () => console.log('Fluco de evento completo')
     // )
+  }
+
+  public limpaPesquisa(): void {
+    this.subjectPesquisa.next('')
   }
 
 }

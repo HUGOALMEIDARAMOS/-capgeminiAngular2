@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,8 +12,18 @@ import { DiversaoComponent } from './diversao/diversao.component';
 import { OfertaComponent } from './oferta/oferta.component';
 import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component'
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 
-//import {ROUTER } from '@angular/router/router'
+
+//Pipe criado
+import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
+import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
+
+
+
+//Configuracao global de moeda brasileira
+registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
   declarations: [
@@ -25,7 +35,9 @@ import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component'
     DiversaoComponent,
     OfertaComponent,
     ComoUsarComponent,
-    OndeFicaComponent
+    OndeFicaComponent,
+    DescricaoReduzida,
+    OrdemCompraComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +45,12 @@ import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component'
     HttpClientModule,
    
   ],
-  providers: [],
+  providers: [
+    {
+      provide:LOCALE_ID,
+      useValue: 'pt-BR'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
