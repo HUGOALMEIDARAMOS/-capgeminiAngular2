@@ -199,6 +199,20 @@
       "complemento": "uidaed 229",
       "formaPagamento": "debito",
       "id": 2
+    },
+    {
+      "endereco": "Rua 50",
+      "numero": "365",
+      "complemento": "unidaed 101",
+      "formaPagamento": "debito",
+      "id": 3
+    },
+    {
+      "endereco": "Rua alfandega",
+      "numero": "123",
+      "complemento": "canto das flores",
+      "formaPagamento": "dinheiro",
+      "id": 4
     }
   ]
 }
