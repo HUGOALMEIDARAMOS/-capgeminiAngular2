@@ -213,6 +213,36 @@
       "complemento": "canto das flores",
       "formaPagamento": "dinheiro",
       "id": 4
+    },
+    {
+      "endereco": "Rua do sol",
+      "numero": 125,
+      "complemento": "virela 10",
+      "id": 5
+    },
+    {
+      "endereco": "rua da paz",
+      "numero": 64,
+      "complemento": "centro",
+      "id": 6
+    },
+    {
+      "endereco": "adahdhlkj",
+      "numero": 65,
+      "complemento": "dasjdhk",
+      "id": 7
+    },
+    {
+      "endereco": "sfdfsdf",
+      "numero": 65,
+      "complemento": "gjgh",
+      "id": 8
+    },
+    {
+      "endereco": "teste",
+      "numero": 656,
+      "complemento": "hjkhkj",
+      "id": 9
     }
   ]
 }

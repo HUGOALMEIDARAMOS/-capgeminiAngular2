@@ -20,6 +20,7 @@ import localePt from '@angular/common/locales/pt';
 import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
 import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -39,12 +40,14 @@ registerLocaleData(localePt, 'pt-BR');
     OndeFicaComponent,
     DescricaoReduzida,
     OrdemCompraComponent,
-    OrdemCompraSucessoComponent
+    OrdemCompraSucessoComponent,
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
    
   ],
   providers: [
