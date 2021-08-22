@@ -243,6 +243,20 @@
       "numero": 656,
       "complemento": "hjkhkj",
       "id": 9
+    },
+    {
+      "endereco": "asdasdas",
+      "numero": 65,
+      "complemento": "jhjh",
+      "formaPagamento": "dinheiro",
+      "id": 10
+    },
+    {
+      "endereco": "avenida guajajaras kkk",
+      "numero": 7854,
+      "complemento": "nadinha",
+      "formaPagamento": "dinheiro",
+      "id": 11
     }
   ]
 }
