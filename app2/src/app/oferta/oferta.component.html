@@ -19,11 +19,10 @@
       <div class="row">
         <div class="col-md-6">
           <div class="img_capa">
-            <img [src]="oferta.imagens[0].url" />
-          </div>
-  
+            <img [src]="oferta.imagens[0].url"  id="principal"/>
+          </div>  
           <div class="thumbnails">
-            <img *ngFor="let imagem of oferta.imagens" [src]="imagem.url" />
+            <img *ngFor="let imagem of oferta.imagens" [src]="imagem.url"    (click)="mudarImagem(imagem)">
           </div>
         </div>
   
@@ -43,7 +42,7 @@
   
           <div class="row">
             <div class="col text-center">
-              <button type="button" class="btn btn-warning btn-lg">Adicionar ao carrinho</button>
+              <button type="button" class="btn btn-warning btn-lg"  (click)="adcionarItemCarrinho(oferta)">Adicionar ao carrinho</button>
             </div>
           </div>            
         </div>  

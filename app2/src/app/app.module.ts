@@ -21,6 +21,8 @@ import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
 import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CarrinhoService } from './carrinho.service';
+
 
 
 
@@ -52,10 +54,8 @@ registerLocaleData(localePt, 'pt-BR');
    
   ],
   providers: [
-    {
-      provide:LOCALE_ID,
-      useValue: 'pt-BR'
-    }
+    {provide:LOCALE_ID,   useValue: 'pt-BR' },
+    { provide: CarrinhoService, useClass: CarrinhoService }    
   ],
   bootstrap: [AppComponent]
 })

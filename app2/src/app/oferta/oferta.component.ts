@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ɵangular_packages_platform_browser_platform_browser_a } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
-//import { Observable, Observer, Subscription, interval } from 'rxjs';
+import { CarrinhoService } from '../carrinho.service';
 import { OfertasService } from '../ofertas.service';
 import { Oferta } from '../shared/oferta.model';
 
@@ -13,21 +12,22 @@ import { Oferta } from '../shared/oferta.model';
 })
 export class OfertaComponent implements OnInit, OnDestroy {
 
+ 
+
   public oferta !: Oferta
 
   //private tempoObservableSubscription !: Subscription
   //private meuObervableTesteSubscript !: Subscription
   
 
-  constructor( private route: ActivatedRoute, private ofertaService: OfertasService) { }
+  constructor( private route: ActivatedRoute, private ofertaService: OfertasService, private carrinhoService: CarrinhoService) { }
 
   ngOnInit(): void {
-
     this.route.params.subscribe((parametros: Params) =>{
       this.ofertaService.getOfertaPorId( parametros.id)
       .then(( oferta: Oferta ) => {
         this.oferta = oferta
-        //console.log(this.oferta)
+        console.log(this.oferta)
       })
     })
 
@@ -38,7 +38,16 @@ export class OfertaComponent implements OnInit, OnDestroy {
      //this.meuObervableTesteSubscript.unsubscribe()
    }
 
+ 
+  public mudarImagem(termopesquisa: any) : void{       
+    document.querySelector("#principal")?.setAttribute('src',termopesquisa.url)  
+   }
 
+   public adcionarItemCarrinho(oferta: Oferta): void{
+    this.carrinhoService.incluirItem(this.oferta)
+    console.log(this.carrinhoService.exibirItens())
+ 
+   }
   
-
+  
 }
