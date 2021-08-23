@@ -31,43 +31,6 @@ export class OfertaComponent implements OnInit, OnDestroy {
       })
     })
 
-   
-    //  let tempo = interval(2000)
-    //    this.tempoObservableSubscription = tempo.subscribe((intervalo: number) =>{
-    //    console.log(intervalo)
-    //  })
-
-
-    // //observable (observavel)
-    // let meuObservableTeste =  new Observable((observer: Observer<number>) => {
-    //   observer.next(1)
-    //   observer.next(3)
-    //   observer.complete()
-    //   //observer.error('Algum erro encontrado na stream')
-    //   observer.next(7)
-    // })
-
-
-    // //observable (observador)
-    //  this.meuObervableTesteSubscript = meuObservableTeste.subscribe(
-    //   (resultado :number)=> console.log(resultado + 10),  //trata p next
-    //   (erro: string) => console.log(erro),  // trata o erro
-    //   () => console.log('Stram foi fianlizada') //trata a conclusao
-    // )
-   
-
-      /*this.route.params.subscribe((parametro: any) =>{
-        console.log('subscribe', parametro)
-      }, 
-      (erro:any)=> console.log(erro), 
-      () => console.log('processamento concluido')
-      )*/
-  
-  //outra forma de recuperacao de dados, porem aqui fica vigiando as alteracoes
-  /*this.route.params.subscribe((parametro: any) => {
-    console.log(parametro.id)
-  })*/
-  
   }
 
    ngOnDestroy(){

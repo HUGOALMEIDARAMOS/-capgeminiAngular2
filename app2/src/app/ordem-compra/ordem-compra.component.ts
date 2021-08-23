@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,  Validators } from '@angular/forms';
+import CarrinhoService from '../carrinho.service';
 import { ordemCompraService } from '../ordem-compra-service';
 import { Pedido } from '../shared/pedido.model';
 
@@ -7,7 +8,7 @@ import { Pedido } from '../shared/pedido.model';
   selector: 'app-ordem-compra',
   templateUrl: './ordem-compra.component.html',
   styleUrls: ['./ordem-compra.component.css'],
-  providers:[ordemCompraService]
+  providers:[ordemCompraService, CarrinhoService]
 })
 export class OrdemCompraComponent implements OnInit {  
 
@@ -20,14 +21,16 @@ export class OrdemCompraComponent implements OnInit {
     'formaPagamento': new FormControl(null, [Validators.required])
   })
  
-  constructor(private ordemCompraService: ordemCompraService) { }
+  constructor(private ordemCompraService: ordemCompraService, private carrinhoService: CarrinhoService) { }
 
   ngOnInit(): void {
+
+    console.log('Array de itens do Carrinho ', this.carrinhoService.exibirItens())
   } 
 
   public confirmarCompra():void {
     if(this.formulario.status === 'INVALID'){
-      this.formulario.get('endereco')?.markAsTouched()                                   
+      this.formulario.get('endereco')?.markAsTouched()   //Para que as validações visuais nos componentes sejam efetuados em combinacao com value                      
       this.formulario.get('numero')?.markAsTouched()
       this.formulario.get('formaPagamento')?.markAsTouched()
     }else{
